@@ -4,5 +4,7 @@ RUN mvn clean package -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
 COPY --from=build /target/expensetracker-0.0.1-SNAPSHOT.jar expensetracker.jar
-EXPOSE 8080
+
+EXPOSE 3306
+
 ENTRYPOINT ["java","-jar","expensetracker.jar"] 
