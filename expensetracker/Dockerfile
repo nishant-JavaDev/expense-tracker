@@ -5,11 +5,11 @@ FROM maven:3.8.5-openjdk-17 AS build
 WORKDIR /app
 
 # Copy the pom.xml and download dependencies
-COPY expensetracker/pom.xml .  # Copy pom.xml to /app
-RUN mvn dependency:go-offline    # Download all dependencies
+COPY expensetracker/pom.xml .          # Copy pom.xml to /app
+RUN mvn dependency:go-offline           # Download all dependencies
 
 # Now copy the source code to the container
-COPY expensetracker/src ./src      # Copy expensetracker/src to /app/src
+COPY expensetracker/src ./src           # Copy expensetracker/src to /app/src
 
 # Build the project and skip tests
 RUN mvn clean package -DskipTests
